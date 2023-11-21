@@ -3,7 +3,7 @@ import telebot
 from datetime import datetime
 import config
 
-#Replace with your Telegram bot token
+#Telegram bot token
 bot = telebot.TeleBot(config.TELEGRAM_API_KEY)
 
 #OpenWeatherMap API key
@@ -25,9 +25,8 @@ weather_emojis = {
 
 #Function to fetch weather data from OpenWeatherMap API
 def get_weather_data(city_name):
-    #Construct API URL
     url = f'https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={api_key}&units=metric'
-
+   
     #Send GET request to API
     response = requests.get(url)
 
@@ -72,6 +71,6 @@ def handle_message(message):
             #Reply to the message of user
             bot.reply_to(message, weather_message)
         else:
-            #Send error message
+            #Send error message if error occured
             bot.reply_to(message, "Invalid city name. Please try again.")
 bot.polling()
