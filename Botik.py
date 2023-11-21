@@ -55,7 +55,7 @@ def handle_message(message):
     #Check if message is a command
     if message.text.startswith('/weather'):
         #Extract city name from command
-        city_name = message.text.split()[1]
+        city_name = message.text.split(' ',1)[1]
         #Retrieve weather data for the city
         weather_data = get_weather_data(city_name)
         
