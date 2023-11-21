@@ -4,7 +4,7 @@ from datetime import datetime
 import config
 
 #Replace with your Telegram bot token
-bot = telebot.TeleBot(config.TELEGRAM_API_KEY)meniay
+bot = telebot.TeleBot(config.TELEGRAM_API_KEY)
 
 #OpenWeatherMap API key
 api_key = config.WEATHER_API_KEY
