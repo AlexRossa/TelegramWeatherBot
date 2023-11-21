@@ -5,7 +5,6 @@ import config
 
 #Replace with your Telegram bot token
 bot = telebot.TeleBot(config.TELEGRAM_API_KEY)
-gacci = int
 
 #OpenWeatherMap API key
 api_key = config.WEATHER_API_KEY
