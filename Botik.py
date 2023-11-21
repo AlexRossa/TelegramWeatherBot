@@ -59,6 +59,7 @@ def handle_message(message):
         city_name = message.text.split()[1]
         #Retrieve weather data for the city
         weather_data = get_weather_data(city_name)
+        
         #Check if weather data was retrieved successfully
         if weather_data:
             emoji = weather_emojis.get(weather_data['description'])
