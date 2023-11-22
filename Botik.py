@@ -9,7 +9,7 @@ bot = telebot.TeleBot(config.TELEGRAM_API_KEY)
 #OpenWeatherMap API key
 api_key = config.WEATHER_API_KEY
 
-#Emojis for the description of the weather
+#Emojis dictionary for the description of weather
 weather_emojis = {
     'clear sky': '☀️',
     'few clouds': '🌤️',
@@ -41,12 +41,15 @@ def get_weather_data(city_name):
             'description': data['weather'][0]['description'],
             'time': datetime.now().strftime('%H:%M')
         }
+        #Return weather data
         return weather_data
     else:
+        #If request wasn't successfull, return none
         return None
-
+#Starting the bot
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
+    #Reply to command start, help
     bot.reply_to(message, "Welcome! Type /weather <city> to get the current weather.")
 
 #Handle incoming messages
@@ -61,6 +64,7 @@ def handle_message(message):
         
         #Check if weather data was retrieved successfully
         if weather_data:
+            #Get needed emoji depending on the description
             emoji = weather_emojis.get(weather_data['description'])
             #Format weather message
             weather_message = f"Current weather in {city_name}:\n\n" \
